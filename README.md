@@ -18,6 +18,13 @@ This reposity cotains the code corresponding with:
 
 The data associated with this study can be found at [URL](URL) and is described in detail within the paper. The data set encompasses over 2 billion pose instances, each paired with edge calls and metadata.
 
+If you are generating your own data to use within this pipeline, it will likely need to be recorded in shorter videos that are then concatenated for tracking purposes. Use the below to concatenate mp4s:
+
+'''
+for f in *.mp4; do echo "file '$f'" >> vidlist.txt; done
+ffmpeg -f concat -safe 0 -i vidlist.txt -c libx265 merged.mp4
+'''
+
 ## Unsupervised behavioral analysis
 
 Brief examples of analysis are available here illustrating how to load and analyze tracks. This pipeline heavily depends on work from Gordon Berman and Kanishk Jain both from the MATLAB implementation of [MotionMapper](https://github.com/gordonberman/MotionMapper) and the Python implementation [MotionMapperPy](https://github.com/bermanlabemory/motionmapperpy).
